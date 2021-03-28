@@ -45,17 +45,32 @@
       </a>
 
       <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-        <li><a href="index.php" class="nav-link px-2 text-secondary">Home</a></li>
-        <li><a href="index.php?page=usager" class="nav-link px-2 text-white">Usagers</a></li>
-        <li><a href="index.php?page=createUsager" class="nav-link px-2 text-white">Ajouter</a></li>
+        <li><a href="index.php" class="nav-link px-2 text-secondary">Accueil</a></li>
+        <li><a href="index.php?page=usager" class="nav-link px-2 text-white">Utilisateurs</a></li>
         <li><a href="index.php?page=tarif" class="nav-link px-2 text-white">Tarifs</a></li>
-        <li><a href="index.php?page=depot" class="nav-link px-2 text-white">Ajouter un dépot</a></li>
+        <div class="dropdown">
+          <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Ajouter
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="index.php?page=createUsager">Ajouter un utilisateur</a>
+            <a class="dropdown-item" href="index.php?page=depot">Ajouter un dépot</a>
+          </div>
+        </div>
       </ul>
 
+
       <div class="text-end">
-        <a href="index.php?page=login">
-          <button type="button" class="btn btn-outline-light me-2">Login</button>
+        {if $isConnected}
+        <a href="controllers/logout.php">
+          <button type="button" class="btn btn-danger me-2">Se déconnecter</button>
         </a>
+        {else}
+        <a href="index.php?page=login">
+          <button type="button" class="btn btn-outline-light me-2">Se connecter</button>
+        </a>
+
+        {/if}
       </div>
     </div>
   </div>

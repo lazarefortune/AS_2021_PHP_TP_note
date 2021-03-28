@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.39, created on 2021-03-28 00:43:17
+/* Smarty version 3.1.39, created on 2021-03-28 04:29:56
   from 'C:\wamp64\www\mvc\tpl\pages\usager.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
-  'unifunc' => 'content_605fd1251dcdb0_53174153',
+  'unifunc' => 'content_6060064472b0b1_46920941',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'b837b9f2e73b65eb3d5a4c1f9d41fe370cc41444' => 
     array (
       0 => 'C:\\wamp64\\www\\mvc\\tpl\\pages\\usager.tpl',
-      1 => 1616892196,
+      1 => 1616905543,
       2 => 'file',
     ),
   ),
@@ -20,14 +20,14 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_605fd1251dcdb0_53174153 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6060064472b0b1_46920941 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'C:\\wamp64\\www\\mvc\\web\\tools\\smarty\\plugins\\modifier.date_format.php','function'=>'smarty_modifier_date_format',),));
 ?>
 <div class="row d-flex justify-content-center">
   <div class="col-md-9">
 
-    <table class="table caption-top  table-striped">
-      <caption>List des clients </caption>
+    <table class="table caption-top table-responsive table-striped">
+      <caption>Liste des clients </caption>
       <thead class="table-dark">
         <tr>
           <th scope="col">Numéro de carte</th>

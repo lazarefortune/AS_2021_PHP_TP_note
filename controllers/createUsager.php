@@ -1,6 +1,6 @@
 <?php
-$hasErreur = False;
-$erreur = "";
+
+$notifications = [];
 
 // Récupération des catégories pour la vue
 $db = Connexion::get();
@@ -9,40 +9,40 @@ $categories = $query->fetchAll();
 
 // Réception du formulaire
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  if (isset($_POST['numCarte']) && isset($_POST['nom']) && $_POST['numCateg'] && $_POST['dateCarte'] && $_POST['mtCaution']) {
 
-      $nom = $_POST['nom'];
-      $numCarte = $_POST['numCarte'];
-      $numCateg = $_POST['numCateg'];
-      $dateCarte = $_POST['dateCarte'];
-      $montantCaution = $_POST['mtCaution'];
-      if (!Usager::cartNumberExists($numCarte)) {
+    $hasError = !empty($_POST['numCarte']) && !empty($_POST['nom']) && !empty($_POST['numCateg']) && !empty($_POST['dateCarte']) && !empty($_POST['mtCaution']);
 
-        Usager::creer($nom, $numCarte, $numCateg, $dateCarte,$montantCaution);
+// Test de reception des données du formulaire
+    if ($hasError) {
 
-        // try {
-        // } catch (Exception $e) {
-        //   $erreur = "Cet numéro de carte existe déjà";
-        //   $hasErreur = True;
-        // }
-      }else {
-        $erreur = "Cet numéro de carte existe déjà";
-        $hasErreur = True;
+      try {
+
+        $nom = $_POST['nom'];
+        $numCarte = $_POST['numCarte'];
+        $numCateg = $_POST['numCateg'];
+        $dateCarte = $_POST['dateCarte'];
+        $montantCaution = $_POST['mtCaution'];
+
+        // Vérification de l'existence du numéro de carte
+        if (!Usager::cartNumberExists($numCarte)) {
+          // Création de l'utilisateur
+          Usager::creer($nom, $numCarte, $numCateg, $dateCarte,$montantCaution);
+          array_push($notifications, ['type' => 'success', 'message' => 'Utilisateur ajouté avec succès']);
+        }else {
+          array_push($notifications, ['type' => 'danger', 'message' => 'Ce numéro de carte existe déjà']);
+        }
+      } catch (Exception $error) {
+        array_push($notifications, ['type' => 'danger', 'message' => $error->getMessage()]);
       }
-
+    }else {
+      array_push($notifications, ['type' => 'danger', 'message' => 'Veuillez remplir tous les champs']);
     }
-    else {
-      $erreur = "Veuillez remplir tous les champs";
-      $hasErreur = True;
-    }
-
 
 }
 
 //On envoie à la vue
 $smarty->assign('categories', $categories);
-$smarty->assign('hasErreur', $hasErreur);
-$smarty->assign('erreur', $erreur);
-
+$_SESSION['notifications'] = $notifications;
+$smarty->assign('notifications', $notifications);
 
 ?>

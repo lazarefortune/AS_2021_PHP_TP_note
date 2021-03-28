@@ -1,7 +1,8 @@
 <div class="row d-flex justify-content-center">
   <div class="col-md-9 ">
 
-    <table class="table table-custom table-striped">
+    <table class="table caption-top  table-striped">
+      <caption>Liste des tarifs </caption>
       <thead class="table-dark">
         <tr>
           <th scope="col">Libellé catégorie</th>

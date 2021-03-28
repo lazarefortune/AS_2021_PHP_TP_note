@@ -1,8 +1,13 @@
 <div class="container">
-  <div class="row">
-    <div class="col-md-12">
+  <div class="row d-flex justify-content-center">
+    <div class="col-md-9">
       <h5>Ajout dun depot </h5>
 
+      {foreach $notifications as $notification}
+        <div class="alert alert-{$notification.type}">
+          {$notification.message}
+        </div>
+      {/foreach}
 
       <form method="post" name="action">
 
@@ -17,11 +22,12 @@
         </div>
 
         <div class="mb-3">
-          <label for="mtCaution" class="form-label">Montant de la caution</label>
-          <input type="number" class="form-control" name="mtCaution" id="mtCaution">
+          <label for="montant" class="form-label">Montant (€)</label>
+          <input type="number" class="form-control" id="montant" name="montant">
         </div>
 
-        <button type="submit" class="btn btn-success" name="action">Ajouter </button>
+        <button type="submit" class="btn btn-success" name="action">Faire un dépot </button>
+        <button type="reset" class="btn btn-secondary" name="button">Réinitialiser</button>
       </form>
     </div>
   </div>

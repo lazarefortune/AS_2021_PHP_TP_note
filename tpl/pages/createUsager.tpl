@@ -3,11 +3,13 @@
     <div class="col-md-9">
 
       <h5>Ajouter un usager</h5>
-      {if $hasErreur}
-      <div class="alert alert-danger" role="alert">
-        {$erreur}
-      </div>
-      {/if}
+  
+
+      {foreach $notifications as $notification}
+        <div class="alert alert-{$notification.type}">
+          {$notification.message}
+        </div>
+      {/foreach}
 
       <form method="post" name="action">
         <div class="mb-3">

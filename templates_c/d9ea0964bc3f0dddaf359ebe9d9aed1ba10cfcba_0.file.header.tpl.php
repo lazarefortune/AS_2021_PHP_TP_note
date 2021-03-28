@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.39, created on 2021-03-28 00:21:49
+/* Smarty version 3.1.39, created on 2021-03-28 04:20:07
   from 'C:\wamp64\www\mvc\tpl\header.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
-  'unifunc' => 'content_605fcc1d3a0511_72418340',
+  'unifunc' => 'content_606003f767cd89_95452933',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'd9ea0964bc3f0dddaf359ebe9d9aed1ba10cfcba' => 
     array (
       0 => 'C:\\wamp64\\www\\mvc\\tpl\\header.tpl',
-      1 => 1616890907,
+      1 => 1616905206,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_605fcc1d3a0511_72418340 (Smarty_Internal_Template $_smarty_tpl) {
+function content_606003f767cd89_95452933 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="fr">
   <head>
@@ -68,17 +68,32 @@ function content_605fcc1d3a0511_72418340 (Smarty_Internal_Template $_smarty_tpl)
       </a>
 
       <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-        <li><a href="index.php" class="nav-link px-2 text-secondary">Home</a></li>
-        <li><a href="index.php?page=usager" class="nav-link px-2 text-white">Usagers</a></li>
-        <li><a href="index.php?page=createUsager" class="nav-link px-2 text-white">Ajouter</a></li>
+        <li><a href="index.php" class="nav-link px-2 text-secondary">Accueil</a></li>
+        <li><a href="index.php?page=usager" class="nav-link px-2 text-white">Utilisateurs</a></li>
         <li><a href="index.php?page=tarif" class="nav-link px-2 text-white">Tarifs</a></li>
-        <li><a href="index.php?page=depot" class="nav-link px-2 text-white">Ajouter un dépot</a></li>
+        <div class="dropdown">
+          <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Ajouter
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="index.php?page=createUsager">Ajouter un utilisateur</a>
+            <a class="dropdown-item" href="index.php?page=depot">Ajouter un dépot</a>
+          </div>
+        </div>
       </ul>
 
+
       <div class="text-end">
-        <a href="index.php?page=login">
-          <button type="button" class="btn btn-outline-light me-2">Login</button>
+        <?php if ($_smarty_tpl->tpl_vars['isConnected']->value) {?>
+        <a href="controllers/logout.php">
+          <button type="button" class="btn btn-danger me-2">Se déconnecter</button>
         </a>
+        <?php } else { ?>
+        <a href="index.php?page=login">
+          <button type="button" class="btn btn-outline-light me-2">Se connecter</button>
+        </a>
+
+        <?php }?>
       </div>
     </div>
   </div>

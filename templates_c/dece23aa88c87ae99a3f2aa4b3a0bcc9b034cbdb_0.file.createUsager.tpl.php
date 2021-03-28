@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.39, created on 2021-03-28 00:55:51
+/* Smarty version 3.1.39, created on 2021-03-28 02:32:04
   from 'C:\wamp64\www\mvc\tpl\pages\createUsager.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
-  'unifunc' => 'content_605fd417cd18b9_85599616',
+  'unifunc' => 'content_605feaa4753655_14016851',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'dece23aa88c87ae99a3f2aa4b3a0bcc9b034cbdb' => 
     array (
       0 => 'C:\\wamp64\\www\\mvc\\tpl\\pages\\createUsager.tpl',
-      1 => 1616892949,
+      1 => 1616898659,
       2 => 'file',
     ),
   ),
@@ -20,18 +20,28 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_605fd417cd18b9_85599616 (Smarty_Internal_Template $_smarty_tpl) {
+function content_605feaa4753655_14016851 (Smarty_Internal_Template $_smarty_tpl) {
 ?><div class="container">
   <div class="row d-flex justify-content-center">
     <div class="col-md-9">
 
       <h5>Ajouter un usager</h5>
-      <?php if ($_smarty_tpl->tpl_vars['hasErreur']->value) {?>
-      <div class="alert alert-danger" role="alert">
-        <?php echo $_smarty_tpl->tpl_vars['erreur']->value;?>
+  
 
-      </div>
-      <?php }?>
+      <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['notifications']->value, 'notification');
+$_smarty_tpl->tpl_vars['notification']->do_else = true;
+if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['notification']->value) {
+$_smarty_tpl->tpl_vars['notification']->do_else = false;
+?>
+        <div class="alert alert-<?php echo $_smarty_tpl->tpl_vars['notification']->value['type'];?>
+">
+          <?php echo $_smarty_tpl->tpl_vars['notification']->value['message'];?>
+
+        </div>
+      <?php
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 
       <form method="post" name="action">
         <div class="mb-3">

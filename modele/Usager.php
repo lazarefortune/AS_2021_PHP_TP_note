@@ -57,14 +57,14 @@ class Usager
 
     try {
 
-      $sql = 'INSERT INTO usager (numCarte, nom, numCateg, mtCaution, dateCarte, solde)
+      $sql = 'INSERT INTO usager (num_carte, nom, num_categ, mt_caution, date_carte, solde)
       VALUES (:numCarte, :nom, :numCateg, :mtCaution, :dateCarte, :solde)';
       $query = $db->prepare($sql);
       $query->execute($inputParameters);
 
     } catch (Exception $e) {
 
-      throw new Exception('Echec de l\'ajout');
+      throw new Exception('Erreur : '.$e->getMessage());
     }
 
   }
